@@ -40,31 +40,28 @@ class HaloDistance:
         """
         # get angle of path and target to stanton marker using current position
         # and known side lengths with arccosine
+        return self._calculate_interesect(
+            distance_to_centre[target],
+            distance_to_target,
+            bands[band]["centre"],
+        )
+
+    def _calculate_interesect(self, centre, target, band):
         angle_a = math.acos(
-            (
-                distance_to_centre[target] ** 2
-                + distance_to_target**2
-                - self.distance_to_marker**2
-            )
-            / (2 * distance_to_centre[target] * distance_to_target)
+            (centre**2 + target**2 - self.distance_to_marker**2)
+            / (2 * centre * target)
         )
 
         # with known sides standon marker to target and halo, and known angle
         # from path and target to stanton marker, use arcsine to calculate
         # angle from path and band to standton marker
-        angle_b = math.asin(
-            distance_to_centre[target]
-            * math.sin(angle_a)
-            / bands[band]["centre"]
-        )
+        angle_b = math.asin(centre * math.sin(angle_a) / band)
 
         # triangle angles must add up to pi radians(180 degrees)
         angle_c = math.pi - angle_a - angle_b
 
         # with 2 known sides and 3 known angles, finally calculate the last
         # side, this will be the distance where we need to stop
-        band_intersect = (
-            bands[band + 1]["centre"] / math.sin(angle_a)
-        ) * math.sin(angle_c)
+        band_intersect = (band / math.sin(angle_a)) * math.sin(angle_c)
 
         return band_intersect
