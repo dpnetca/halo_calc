@@ -30,7 +30,9 @@ The forumla used for this is:
 
 $a = acos ({ B^2 + C^2 - A^2 \over 2BC})$
 
-We are now able to form a triangle with three known components, the distance from the target to the Stanton marker, the angle previously calculated, and the distance from the Standon marker to the desired path. Using the law of sines we can not calculate the length of the path at our desired band, or where we need to stop to land in the band
+We are now able to form a triangle with three known components, the distance from the target to the Stanton marker (B), the angle previously calculated (a), and the distance from the Standon marker to the halo band (A). Using the law of sines we can not calculate the length of the path (C) at our desired band, or where we need to stop to land in the band
+
+![Ending Triangle](docs/end_triangle.png "Ending Triangle")
 
 The forumlas used for this are:
 
