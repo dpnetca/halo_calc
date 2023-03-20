@@ -6,7 +6,7 @@ class HaloDistance:
     def __init__(self, distance_to_marker: int):
         self.distance_to_marker = distance_to_marker
 
-    def distance_to_band(
+    def to_mid_band(
         self, target: str, distance_to_target: int, band: int
     ) -> int:
         return self._calculate_interesect(

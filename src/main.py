@@ -28,7 +28,7 @@ def main():
         exit(1)
 
     halo = HaloDistance(distance_to_marker)
-    stop = halo.distance_to_band(route_target, distance_to_target, args.band)
+    stop = halo.to_mid_band(route_target, distance_to_target, args.band)
 
     print(f"stop at centre {int(stop):,}km")
 
