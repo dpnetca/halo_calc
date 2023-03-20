@@ -5,7 +5,6 @@ gathering as I have it anyway, may be benificial for future use
 distance captured bsed on landing spot from QT, depending on angle you 
 come from the distance will vary, will lilely round this to nearest 100
 """
-# TODO 0 data still needs to be collected
 distance_to_centre = {
     "arccorp": 28916283,
     "arcl1": 25993364,
