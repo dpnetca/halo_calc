@@ -1,5 +1,9 @@
 # Halo Calculator
 
+## Warning:
+
+This is very much still a work in progress and is changing frequently, formula's have not been fully tested yet and may still contain errors
+
 ## Objective:
 
 In Star Citizen, calculate distance from any point in the Stanton system to the Aaron Halo. Requires user to know their current location and distance to the Stanton marker, and distance to some known location on the other side of the halo.

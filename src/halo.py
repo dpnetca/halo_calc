@@ -7,7 +7,17 @@ class HaloDistance:
     def __init__(self, distance_to_marker: int):
         self.distance_to_marker = distance_to_marker
 
-    def to_mid_band(
+    def to_band(self, target: str, distance_to_target: int, band: int):
+        if band == 0:
+            print("band 0 not yet implemented")
+            return
+        centre = self._to_mid_band(target, distance_to_target, band)
+        start, end = self._to_band_edges(target, distance_to_target, band)
+
+        print(f"stop between {int(start):,}km and {int(end):,}km")
+        print(f"stop at centre {int(centre):,}km")
+
+    def _to_mid_band(
         self, target: str, distance_to_target: int, band: int
     ) -> int:
         return self._calculate_interesect(
@@ -16,7 +26,7 @@ class HaloDistance:
             bands[band]["centre"],
         )
 
-    def to_band_edges(
+    def _to_band_edges(
         self, target: str, distance_to_target: int, band: int
     ) -> Tuple[int, int]:
         band_start = bands[band]["centre"] - bands[band]["width"] / 2
