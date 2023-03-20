@@ -22,7 +22,9 @@ python main.py route_target distance_to_target distance_to_marker band
 
 Using the sine and cosine given any three elements of a triangle including one side, and 2 sides or angles, we can calculate all sides and angles of the triangle.
 
-Use the existing distances to form a triangle with three known sides the distance from current location to Stanton marker and target, and the distance from the target to Stanton marker. With this we use the law of cosines to calculate the angle between the path to the target and the target to the Stanton marker. As we travel to the target this angle does not change.
+Use the existing distances to form a triangle with three known sides the distance from current location to Stanton marker (A) and target (C), and the distance from the target to Stanton marker (B). With this we use the law of cosines to calculate the angle (a) between the path to the target and the target to the Stanton marker. As we travel to the target this angle does not change.
+
+![Starting Triangle](docs/starting_triangle.png "Starting Triangle")
 
 The forumla used for this is:
 
