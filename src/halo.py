@@ -1,4 +1,5 @@
 import math
+from typing import Tuple
 from data import bands, distance_to_centre
 
 
@@ -14,6 +15,23 @@ class HaloDistance:
             distance_to_target,
             bands[band]["centre"],
         )
+
+    def to_band_edges(
+        self, target: str, distance_to_target: int, band: int
+    ) -> Tuple[int, int]:
+        band_start = bands[band]["centre"] - bands[band]["width"] / 2
+        band_end = bands[band]["centre"] + bands[band]["width"] / 2
+        start = self._calculate_interesect(
+            distance_to_centre[target],
+            distance_to_target,
+            band_start,
+        )
+        end = self._calculate_interesect(
+            distance_to_centre[target],
+            distance_to_target,
+            band_end,
+        )
+        return (start, end)
 
     def _calculate_interesect(self, centre, target, band):
         angle_a = math.acos(

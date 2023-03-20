@@ -28,9 +28,13 @@ def main():
         exit(1)
 
     halo = HaloDistance(distance_to_marker)
-    stop = halo.to_mid_band(route_target, distance_to_target, args.band)
+    centre = halo.to_mid_band(route_target, distance_to_target, args.band)
+    start, end = halo.to_band_edges(
+        route_target, distance_to_target, args.band
+    )
 
-    print(f"stop at centre {int(stop):,}km")
+    print(f"stop between {int(start):,}km and {int(end):,}km")
+    print(f"stop at centre {int(centre):,}km")
 
 
 if __name__ == "__main__":
