@@ -9,13 +9,19 @@ class HaloDistance:
 
     def to_band(self, target: str, distance_to_target: int, band: int):
         if band == 0:
-            print("band 0 not yet implemented")
+            self.to_bands(target, distance_to_target)
             return
         centre = self._to_mid_band(target, distance_to_target, band)
         start, end = self._to_band_edges(target, distance_to_target, band)
 
         print(f"stop between {int(start):,}km and {int(end):,}km")
         print(f"stop at centre {int(centre):,}km")
+
+    def to_bands(self, target: str, distance_to_target: int):
+        for band in range(1, 11):
+            print(f"Band {band}:")
+            self.to_band(target, distance_to_target, band)
+            print()
 
     def _to_mid_band(
         self, target: str, distance_to_target: int, band: int

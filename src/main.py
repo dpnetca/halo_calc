@@ -28,7 +28,10 @@ def main():
         exit(1)
 
     halo = HaloDistance(distance_to_marker)
+
     halo.to_band(route_target, distance_to_target, args.band)
+
+    # halo.to_bands(route_target, distance_to_target)
 
 
 if __name__ == "__main__":
