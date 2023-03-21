@@ -12,13 +12,18 @@ class HaloDistance:
             self.to_bands(target, distance_to_target)
             return
         centre = self._to_mid_band(target, distance_to_target, band)
-        if centre > distance_to_target:
+
+        # If the distance to the the the intersect point with centre of band
+        # is greater then the distance to the target then path is fully inside
+        # halo and never intersects, if centre is 0, then the path is outside
+        # the halo and never intersects
+        if centre > distance_to_target or centre == 0:
             print(f"Selected path does not intersect halo band {band}")
             return
         start, end = self._to_band_edges(target, distance_to_target, band)
 
-        print(f"stop between {int(start):,}km and {int(end):,}km")
-        print(f"stop at centre {int(centre):,}km")
+        print(f"stop between {int(start):,}km and {int(end):,}km from target")
+        print(f"stop at centre {int(centre):,}km from target")
 
     def to_bands(self, target: str, distance_to_target: int):
         for band in range(1, 11):
@@ -53,12 +58,15 @@ class HaloDistance:
         return (start, end)
 
     def _calculate_interesect(self, centre, target, band):
-        angle_a = math.acos(
-            (centre**2 + target**2 - self.distance_to_marker**2)
-            / (2 * centre * target)
-        )
-        angle_b = math.asin(centre * math.sin(angle_a) / band)
-        angle_c = math.pi - angle_a - angle_b
-        band_intersect = (band / math.sin(angle_a)) * math.sin(angle_c)
+        try:
+            angle_a = math.acos(
+                (centre**2 + target**2 - self.distance_to_marker**2)
+                / (2 * centre * target)
+            )
+            angle_b = math.asin(centre * math.sin(angle_a) / band)
+            angle_c = math.pi - angle_a - angle_b
+            band_intersect = (band / math.sin(angle_a)) * math.sin(angle_c)
+        except ValueError:  # Math Domain Error
+            return 0
 
         return band_intersect
