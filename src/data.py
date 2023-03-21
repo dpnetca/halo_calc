@@ -13,7 +13,7 @@ distance_to_centre = {
     "arcl4": 28903572,
     "arcl5": 28884756,
     "crusader": 19156500,
-    "crul1": 0,
+    "crul1": 1720649,
     "crul2": 21031126,
     "crul3": 19181352,
     "crul4": 19129523,
