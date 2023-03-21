@@ -4,5 +4,4 @@
 - add error handling if target system name does not exist
 - add handling if path never intersects band
 - add handling if path intesects band twice
-- add '0' to return all bands
 - fill in data for "0" value distances
