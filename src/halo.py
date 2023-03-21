@@ -12,6 +12,9 @@ class HaloDistance:
             self.to_bands(target, distance_to_target)
             return
         centre = self._to_mid_band(target, distance_to_target, band)
+        if centre > distance_to_target:
+            print(f"Selected path does not intersect halo band {band}")
+            return
         start, end = self._to_band_edges(target, distance_to_target, band)
 
         print(f"stop between {int(start):,}km and {int(end):,}km")
