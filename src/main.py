@@ -18,8 +18,8 @@ def main():
         exit(1)
     distance_to_marker = int(distance_to_marker)
 
-    route_target = args.route_target.replace(" ", "").lower()
-    if route_target not in distance_to_centre.keys():
+    target = args.target.replace(" ", "").lower()
+    if target not in distance_to_centre.keys():
         print(f"ERROR, {args.route_target} is not a valid target")
         exit(1)
 
@@ -29,7 +29,7 @@ def main():
 
     halo = HaloDistance(distance_to_marker)
 
-    halo.to_band(route_target, distance_to_target, args.band)
+    halo.to_band(target, distance_to_target, args.band)
 
     # halo.to_bands(route_target, distance_to_target)
 
