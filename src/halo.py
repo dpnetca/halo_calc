@@ -81,10 +81,15 @@ class HaloDistance:
 
     def _calculate_interesect(self, centre, target, band):
         try:
-            angle_a = math.acos(
-                (centre**2 + target**2 - self.distance_to_marker**2)
-                / (2 * centre * target)
+            x = (centre**2 + target**2 - self.distance_to_marker**2) / (
+                2 * centre * target
             )
+            # add some fudge factor to allow for distances that may not be
+            # 100% correct
+            if abs(x) > 1:
+                x = x * 0.99
+            angle_a = math.acos(x)
+
             angle_b = math.asin(centre * math.sin(angle_a) / band)
             angle_c = math.pi - angle_a - angle_b
             band_intersect = (band / math.sin(angle_a)) * math.sin(angle_c)
