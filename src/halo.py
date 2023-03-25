@@ -89,7 +89,7 @@ class HaloDistance:
             # add some fudge factor to allow for distances that may not be
             # 100% correct
             if abs(x) > 1:
-                x = x * 0.99
+                x = x * 0.995
             angle_a = math.acos(x)
 
             angle_b = math.asin(centre * math.sin(angle_a) / band)
