@@ -35,12 +35,12 @@ class HaloDistance:
             target, distance_to_target, band
         )
 
-        if centre < distance_to_target:
+        if centre < distance_to_target and centre > 0:
             print(
                 f"stop between {int(start):,}km and {int(end):,}km from target"
             )
             print(f"stop at centre {int(centre):,}km from target")
-        if centre2 < distance_to_target:
+        if centre2 < distance_to_target and centre2 > 0:
             print(
                 f"stop between {int(start2):,}km and {int(end2):,}km"
                 " from target"
