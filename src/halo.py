@@ -17,7 +17,9 @@ class HaloDistance:
         # If the distance to the the the intersect point with centre of band
         # is greater then the distance to the target then path is fully inside
         # halo and never intersects,
-        if centre > distance_to_target and centre2 > distance_to_target:
+        if (centre > distance_to_target or centre < 0) and (
+            centre2 > distance_to_target or centre2 < 0
+        ):
             print(
                 f"Selected path does not intersect halo band {band}, "
                 "start and end point are inside the band"
